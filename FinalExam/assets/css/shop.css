@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+
+body {
+    background-color: #E3E7E8;
+    font-family: system-ui;
+}
+
+.container {
+    width: 1000px;
+    margin: auto;
+    transition: 0.5s;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    margin-top: 50px;
+}
+
+header .shopping {
+    position: relative;
+    text-align: right;
+}
+
+header .shopping img {
+    width: 40px;
+}
+
+header .shopping span {
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: absolute;
+    top: -5px;
+    left: 80%;
+    padding: 3px 10px;
+}
+
+*{
+   font-family: 'Nunito', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition: all .2s linear;
+   text-transform: capitalize;
+}
+
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+}
+
+body{
+   background: #eee;
+}
+
+
+.container .products-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   gap:2rem;
+}
+
+.container .products-container .product{
+   text-align: center;
+   padding:3rem 2rem;
+   background: #fff;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   outline: .1rem solid #ccc;
+   outline-offset: -1.5rem;
+   cursor: pointer;
+}
+
+.container .products-container .product:hover{
+   outline: .2rem solid #222;
+   outline-offset: 0;
+}
+
+.container .products-container .product img{
+   height: 25rem;
+}
+
+.container .products-container .product:hover img{
+   transform: scale(.9);
+}
+
+.container .products-container .product h3{
+   padding:.5rem 0;
+   font-size: 2rem;
+   color:#444;
+}
+
+.container .products-container .product:hover h3{
+   color:#27ae60;
+}
+
+.container .products-container .product .price{
+   font-size: 2rem;
+   color:#444;
+}
+
+.products-preview{
+   position: fixed;
+   top:0; left:0;
+   min-height: 100vh;
+   width: 100%;
+   background: rgba(0,0,0,.8);
+   display: none;
+   align-items: center;
+   justify-content: center;
+}
+
+.products-preview .preview{
+   display: none;
+   padding:2rem;
+   text-align: center;
+   background: #fff;
+   position: relative;
+   margin:2rem;
+   width: 40rem;
+   margin-left: 300px;
+   
+}
+
+.products-preview .preview.active{
+   display: inline-block;
+}
+
+.products-preview .preview img{
+   height: 30rem;
+}
+
+.products-preview .preview .button {
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #E8BC0E;
+    transition: all 0.2s ease;
+  }
+  .products-preview .preview .button:active {
+    transform: scale(0.96);
+  }
+  .products-preview .preview .button:before,
+  .products-preview .preview .button:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+  }
+  .products-preview .preview .button.animate::before {
+    top: -70%;
+    background-image: radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, transparent 20%,#E8BC0E 20%, transparent 30%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #E8BC0E 15%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+      10% 10%, 18% 18%;
+    animation: greentopBubbles ease-in-out 0.6s forwards infinite;
+  }
+  @keyframes greentopBubbles {
+    0% {
+      background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+        40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+        50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+        50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
+  .products-preview .preview .button.animate::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #E8BC0E 15%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%),
+      radial-gradient(circle, #E8BC0E 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    animation: greenbottomBubbles ease-in-out 0.6s forwards infinite;
+  }
+  @keyframes greenbottomBubbles {
+    0% {
+      background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+        70% -10%, 70% 0%;
+    }
+    50% {
+      background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+        105% 0%;
+    }
+    100% {
+      background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+        110% 10%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
+ 
+
+
+.products-preview .preview .fa-times{
+   position: absolute;
+   top:1rem; right:1.5rem;
+   cursor: pointer;
+   color:#444;
+   font-size: 4rem;
+}
+
+.products-preview .preview .fa-times:hover{
+   transform: rotate(90deg);
+}
+
+.products-preview .preview h3{
+   color:#444;
+   padding:.5rem 0;
+   font-size: 2.5rem;
+}
+
+.products-preview .preview .stars{
+   padding:1rem 0;
+   font-size: 1.7rem;
+}
+
+.products-preview .preview .stars i{
+   color:#27ae60;
+}
+
+.products-preview .preview .stars span{
+   color:#999;
+}
+
+.products-preview .preview p{
+   line-height: 1.5;
+   padding:1rem 0;
+   font-size: 1.6rem;
+   color:#777;
+}
+
+.products-preview .preview .price{
+   padding:1rem 0;
+   font-size: 2.5rem;
+   color:#27ae60;
+}
+
+.products-preview .preview .buttons{
+   display: flex;
+   gap:1.5rem;
+   flex-wrap: wrap;
+   margin-top: 1rem;
+}
+
+.products-preview .preview .buttons a{
+   flex:1 1 16rem;
+   padding:1rem;
+   font-size: 1.8rem;
+   color:#444;
+   border:.1rem solid #444;
+}
+
+.products-preview .preview .buttons a.cart{
+   background: #444;
+   color:#fff;
+}
+
+.products-preview .preview .buttons a.cart:hover{
+   background: #111;
+}
+
+.products-preview .preview .buttons a.buy:hover{
+   background: #444;
+   color:#fff;
+}
+
+
+@media (max-width:991px){
+
+   html{
+      font-size: 55%;
+   }
+
+}
+
+@media (max-width:768px){
+
+   .products-preview .preview img{
+      height: 25rem;
+   }
+
+}
+
+@media (max-width:450px){
+
+   html{
+      font-size: 50%;
+   }
+
+}
+
+.card {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 500px;
+    background-color: #453E3B;
+    height: 100vh;
+    transition: 0.5s;
+}
+
+.active .card {
+    left: calc(100% - 500px);
+}
+
+.active .container {
+    transform: translateX(-200px);
+}
+
+.card h1 {
+    color: #E8BC0E;
+    font-weight: 100;
+    margin: 0;
+    padding: 0 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.card .checkOut {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card .checkOut div {
+    background-color: #E8BC0E;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card .checkOut div:nth-child(2) {
+    background-color: #1C1F25;
+    color: #fff;
+}
+
+.listCard li {
+    display: grid;
+    grid-template-columns: 100px repeat(3, 1fr);
+    color: #fff;
+    row-gap: 10px;
+}
+
+.listCard li div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listCard li img {
+    width: 90%;
+}
+
+.listCard li button {
+    background-color: #fff5;
+    border: none;
+}
+
+.listCard .count {
+    margin: 0 10px;
+}
+
+/* Style de base pour le formulaire */
+#insertCueillette {
+   max-width: 600px; /* Ajustez la largeur maximale selon vos besoins */
+   margin: 0 auto; /* Centrer le formulaire */
+   padding: 20px;
+}
+
+/* Style pour les étiquettes */
+label {
+   display: block;
+   margin-bottom: 5px;
+}
+
+/* Style pour les champs de saisie et les sélecteurs */
+input,
+select {
+   width: 100%;
+   padding: 8px;
+   margin-bottom: 10px;
+   box-sizing: border-box;
+}
+
+/* Style pour le bouton */
+button {
+   background-color: #0b6ef8;
+   color: white;
+   padding: 10px 15px;
+   border: none;
+   cursor: pointer;
+}
+
+/* Règles de médias pour rendre le formulaire réactif */
+@media (max-width: 600px) {
+   /* Ajustez ces règles selon vos besoins pour les écrans plus petits */
+   input,
+   select {
+       width: calc(100% - 20px);
+   }
+}
+
+/* Style de base pour le formulaire de saisie de dépense */
+#insertSaisieDepense {
+   max-width: 600px; /* Ajustez la largeur maximale selon vos besoins */
+   margin: 0 auto; /* Centrer le formulaire */
+   padding: 20px;
+}
+
+/* Style pour les étiquettes */
+label {
+   display: block;
+   margin-bottom: 5px;
+}
+
+/* Style pour les champs de saisie et les sélecteurs */
+input,
+select {
+   width: 100%;
+   padding: 8px;
+   margin-bottom: 10px;
+   box-sizing: border-box;
+}
+
+/* Style pour le bouton */
+button {
+   background-color: #0b6ef8;
+   color: white;
+   padding: 10px 15px;
+   border: none;
+   cursor: pointer;
+}
+
+/* Règles de médias pour rendre le formulaire réactif */
+@media (max-width: 600px) {
+   /* Ajustez ces règles selon vos besoins pour les écrans plus petits */
+   input,
+   select {
+       width: calc(100% - 20px);
+   }
+}
+table {
+   border-collapse: collapse;
+   width: 100%;
+   margin-top: 20px;
+}
+/* Styles pour les cellules d'en-tête */
+
+th {
+   background-color: #007bff;
+   color: #fff;
+   border: 1px solid #ddd;
+   padding: 10px;
+   text-align: left;
+}
+/* Styles pour les cellules de données */
+
+td {
+   border: 1px solid #ddd;
+   padding: 10px;
+}
+/* Styles pour les lignes impaires pour améliorer la lisibilité */
+
+tr:nth-child(odd) {
+   background-color: #f4f4f4;
+}
+
+/* Style pour le formulaire de recherche de résultats */
+#FormResultat {
+   max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+   margin: 0 auto; /* Centrer le formulaire */
+   padding: 20px;
+   background-color: white;
+   color: #fff;
+   border-radius: 5px;
+}
+
+/* Style pour les étiquettes */
+label {
+   display: block;
+   margin-bottom: 5px;
+}
+
+/* Style pour les champs de saisie */
+input[type="date"] {
+   width: 100%;
+   padding: 8px;
+   margin-bottom: 10px;
+   box-sizing: border-box;
+}
+
+/* Style pour le bouton de recherche */
+input[type="submit"] {
+   background-color: #007bff;
+   color: white;
+   padding: 10px 15px;
+   border: none;
+   cursor: pointer;
+   border-radius: 3px;
+}
+
+/* Style pour le survol du bouton */
+input[type="submit"]:hover {
+   background-color: #007bff;
+}
+
+footer {
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+   padding: 10px;
+   background-color: #f0f0f0; /* Couleur de fond du pied de page */
+}
